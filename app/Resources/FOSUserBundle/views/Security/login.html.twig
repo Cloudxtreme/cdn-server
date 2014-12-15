@@ -1,0 +1,51 @@
+{% extends "FOSUserBundle::empty_layout.html.twig" %}
+
+{% set menu_selected_item = 'sign_in' %}
+
+{% block fos_user_content %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 container">
+		<h2>Sign in</h2>
+		<hr/>
+		{% if error %}
+		    <div>{{ error|trans }}</div>
+		{% endif %}
+		
+		<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" role="form">
+		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+		
+			<div class="form-group">
+				<div class="col-xs-3 col-md-3">
+			    	<label class="control-label" for="username">{{ 'security.login.username'|trans }}</label>
+			    </div>
+			    <div class="col-xs-9 col-md-8">
+			    	<input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+			    </div>
+		    </div>
+			
+			<div class="form-group">
+				<div class="col-xs-3 col-md-3">
+		    		<label class="control-label" for="password">{{ 'security.login.password'|trans }}</label>
+		    	</div>
+		    	<div class="col-xs-9 col-md-8">
+		    		<input class="form-control" type="password" id="password" name="_password" required="required" />
+		    	</div>
+		    </div>
+			
+			<div class="form-group">
+				<div class="col-xs-3 col-md-3">
+		    		<label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}:</label>
+		    	</div>
+		    	<div class="col-xs-9 col-md-8">
+		    		<input class="form-control" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+		    	</div>
+		    </div>
+		
+		    <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+		</form>
+	</div>
+</div>
+{% endblock fos_user_content %}

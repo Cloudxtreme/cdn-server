@@ -1,0 +1,7 @@
+{% extends 'CDNServerCoreBundle:Admin:__layout.html.twig' %}
+
+{% set menu_selected_item = (menu_selected_item is defined ? menu_selected_item : 'none') %}
+
+{% block content %}
+    {% block fos_user_content %}{% endblock %}
+{% endblock %}

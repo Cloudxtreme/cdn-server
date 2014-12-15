@@ -1,0 +1,21 @@
+{% extends 'CDNServerCoreBundle:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Project edit
+{% endblock %}
+{% block panel_title %}
+    Project edit
+{% endblock %}
+
+{% set active_page = 'list_projects' %}
+
+{% block panel_content %}
+
+<div class="panel-body">
+    {{ form(edit_form) }}
+
+    {{ form(delete_form) }}
+    <a class="btn btn-default" href="{{ path('admin_project') }}">Back to the list</a>
+</div>
+
+{% endblock %}

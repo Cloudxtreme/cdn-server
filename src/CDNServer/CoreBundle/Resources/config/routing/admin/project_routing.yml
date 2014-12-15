@@ -1,0 +1,30 @@
+admin_project:
+    path:     /
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:index" }
+
+admin_project_show:
+    path:     /{id}/show
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:show" }
+
+admin_project_new:
+    path:     /new
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:new" }
+
+admin_project_create:
+    path:     /create
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:create" }
+    requirements: { _method: post }
+
+admin_project_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:edit" }
+
+admin_project_update:
+    path:     /{id}/update
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:update" }
+    requirements: { _method: post|put }
+
+admin_project_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CDNServerCoreBundle:Admin/Project:delete" }
+    requirements: { _method: post|delete }

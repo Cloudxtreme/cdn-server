@@ -1,0 +1,9 @@
+api_resource_fetch_sync:
+    path:     /fetch
+    defaults: { _controller: "CDNServerCoreBundle:Api/Resource:fetch" }
+    requirements: { _method: post }
+
+api_resource_fetch_async:
+    path:     /a/fetch
+    defaults: { _controller: "CDNServerCoreBundle:Api/Resource:fetchAsync" }
+    requirements: { _method: post }

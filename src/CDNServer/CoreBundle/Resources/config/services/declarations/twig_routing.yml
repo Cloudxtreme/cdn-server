@@ -1,0 +1,7 @@
+services:
+  view.twig.twig_extension.routing:
+    class:        CDNServer\CoreBundle\Twig\TwigRoutingExtension
+    arguments:
+      - @router
+    tags:
+      - { name: twig.extension }

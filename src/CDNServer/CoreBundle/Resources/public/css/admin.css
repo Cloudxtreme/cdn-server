@@ -1,0 +1,70 @@
+/*
+** By default, bootstrap uses the following screen width thresholds :
+** 	- phone :			from 480px to 768px
+** 	- tablet :			from 768px to 992px
+** 	- small desktop:	from 992px to 1200px
+** 	- large desktop:	from 1200px
+** Since its prerogative is "mobile first", we're going to stick to it and define the default
+** style for mobiles (up to 768px width).
+** When exceptions are needed, we will define them by using media-queries with the relevant
+** thresholds.
+*/
+
+body {
+	padding-top: 		45px; /* needed if the top-menu is set to fixed */
+	height: 			100%;
+	/*background-color: 	#4D4D4F;*/
+}
+
+pre {
+	max-width:			550px;
+}
+@media screen and (min-width:992px) {
+	pre { max-width: 800px; }
+}
+@media screen and (min-width:1200px) {
+	pre { max-width: 1000px; }
+}
+
+.json-output {
+	margin-top:			10px;
+}
+
+/*
+** HInclude loading screen
+*/
+
+.row.hinclude-loading {
+	background: 	    url('../images/tools/ajax/ajax-loader.gif') center center no-repeat;
+	display:		    block;
+	position:		    absolute;
+	height:			    350px;
+	top:			    0;
+	bottom:			    0;
+	left:			    0;
+	right:			    0;
+}
+
+.row.ajax-loading {
+	background: 	    url('../images/tools/ajax/ajax-loader.gif') center center no-repeat;
+	height:			    200px;
+}
+
+/*
+**
+*/
+
+.hub-block ul.list-unstyled li span.title {
+	font-size:			17px;
+}
+.hub-block ul.list-unstyled ul.summary li {
+	min-height:			25px;
+}
+.hub-block hr {
+	margin-top:			10px;
+	margin-bottom:		10px;
+}
+
+.panel-body {
+	margin-bottom:		10px;
+}

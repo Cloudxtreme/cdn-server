@@ -1,0 +1,11 @@
+{% extends 'CDNServerCoreBundle:Admin:__layout.html.twig' %}
+
+{% set menu_selected_item = (menu_selected_item is defined ? menu_selected_item : 'none') %}
+
+{% block content %}
+	<div class="row base-block">
+		<div class="col-xs-12 col-md-10 col-md-offset-1 container">
+    		{% block fos_user_content %}{% endblock %}
+    	</div>
+    </div>
+{% endblock %}

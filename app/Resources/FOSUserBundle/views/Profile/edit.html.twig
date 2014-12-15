@@ -1,0 +1,15 @@
+{% extends "FOSUserBundle::remote_layout.html.twig" %}
+
+{% block fos_user_content %}
+
+<div class="row base-form">
+	<div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 container">
+		<h2>Edit your profile</h2>
+		<hr/>
+	
+		{% include "@FUB_Override/Profile/edit_content.html.twig" %}
+		
+	</div>
+</div>
+
+{% endblock %}

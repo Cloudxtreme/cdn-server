@@ -1,0 +1,6 @@
+imports:
+  - { resource: services/service_parameters.yml }
+
+#locally overloaded parameters
+parameters:  
+  

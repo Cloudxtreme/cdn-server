@@ -1,0 +1,20 @@
+{% extends 'CDNServerCoreBundle:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Project creation
+{% endblock %}
+{% block panel_title %}
+    Project creation
+{% endblock %}
+
+{% set active_page = 'list_projects' %}
+
+{% block panel_content %}
+
+<div class="panel-body">
+    {{ form(form) }}
+
+    <a class="btn btn-default" href="{{ path('admin_project') }}">Back to the list</a>
+</div>
+
+{% endblock %}

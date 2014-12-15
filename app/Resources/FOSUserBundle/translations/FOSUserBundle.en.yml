@@ -1,0 +1,6 @@
+# Security
+"Bad credentials": Invalid email or password
+
+security:
+    login:
+        username: "Email:"

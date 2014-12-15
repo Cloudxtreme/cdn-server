@@ -1,0 +1,8 @@
+imports:
+  - { resource: services/service_parameters.yml }
+
+#locally overloaded parameters
+parameters:
+  
+  resource_root_dir:  "uploads/"
+  resource_ext_path:  "http://127.0.0.1:8087/uploads/"

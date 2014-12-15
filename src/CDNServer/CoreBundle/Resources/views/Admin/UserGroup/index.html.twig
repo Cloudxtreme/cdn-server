@@ -1,0 +1,41 @@
+{% extends 'CDNServerCoreBundle:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User Group list
+{% endblock %}
+{% block panel_title %}
+    User Groups
+{% endblock %}
+
+{% set active_page = 'list_usergroups' %}
+
+{% block panel_content %}
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Creation date</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_usergroup_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.creationDate %}{{ entity.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a href="{{ path('admin_usergroup_show', {'id':entity.id}) }}" title="View user group details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search"></span> Details</a>
+                    <a href="{{ path('admin_usergroup_edit', {'id':entity.id}) }}" title="Edit user group details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="panel-footer">
+    <a href="{{ path('admin_usergroup_new') }}" title="Create a new user group" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a new user group</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+imports:
+  - { resource: services/service_parameters_prod.yml }
+  - { resource: services/service_declarations_prod.yml }
