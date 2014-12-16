@@ -1,0 +1,20 @@
+{% extends 'CDNServerCoreBundle:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User creation
+{% endblock %}
+{% block panel_title %}
+    User creation
+{% endblock %}
+
+{% set active_page = 'list_users' %}
+
+{% block panel_content %}
+
+<div class="panel-body">
+    {{ form(form) }}
+
+    <a class="btn btn-default" href="{{ path('admin_user') }}">Back to the list</a>
+</div>
+
+{% endblock %}

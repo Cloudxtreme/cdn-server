@@ -15,6 +15,27 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ResourceController extends Controller
 {
+    public function checkAction(Request $request)
+    {
+        $params = ApiHelper::checkRequiredParameters($request->query->all(), array('key', 'resource'));
+        if (isset($params['_error']))
+            return new Response(json_encode(array('error' => $params['_error'])), 500);
+        $d = $this->getDoctrine();
+
+        if (!($project = $d->getRepository('CDNServerCoreBundle:Project')->findOneBy(array('ukey' => $params['key']))))
+            return new Response(json_encode(array('error' => "Supplied key is invalid.")), 500);
+
+        $name = $params['resource'];
+        if (!($resource = $d->getRepository('CDNServerCoreBundle:Resource')->findOneByProjectAndName($project->getId(), $name)))
+            return new Response(json_encode(array('error' => "The resource ".$name." could not be found for the ".$project->getName()." project.")), 404);
+
+        $path = $project->getFullPath().'/'.$resource->getFilename();
+        return new Response(json_encode(array(
+            'name'  => $resource->getFilename(),
+            'url'   => $this->container->getParameter('resource_ext_path').$path,
+        )), 200);
+    }
+
     /**
      * @param Request $request
      * @return Response

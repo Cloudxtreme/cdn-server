@@ -51,8 +51,10 @@ class User extends BaseUser
 	public function getFirstName()		{ return $this->firstName; }
 	public function getLastName()		{ return $this->lastName; }
     public function getUserGroups()		{ return $this->userGroups; }
+    public function getStringRoles()    { return current($this->roles); }
 	
 	public function setFirstName($fn)	{ $this->firstName = $fn; }
 	public function setLastName($ln)	{ $this->lastName = $ln; }
     public function setUserGroups($ugs) { $this->userGroups = $ugs; }
+    public function setStringRoles($r)  { $this->roles[0] = $r; }
 }

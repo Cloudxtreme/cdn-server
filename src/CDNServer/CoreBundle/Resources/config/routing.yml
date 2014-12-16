@@ -11,6 +11,10 @@ CDNServerCoreBundle_Admin_Project:
     resource: "@CDNServerCoreBundle/Resources/config/routing/admin/project_routing.yml"
     prefix:   /project
 
+CDNServerCoreBundle_Admin_User:
+    resource: "@CDNServerCoreBundle/Resources/config/routing/admin/user_routing.yml"
+    prefix:   /user
+
 CDNServerCoreBundle_Admin_UserGroup:
     resource: "@CDNServerCoreBundle/Resources/config/routing/admin/usergroup_routing.yml"
     prefix:   /user-group

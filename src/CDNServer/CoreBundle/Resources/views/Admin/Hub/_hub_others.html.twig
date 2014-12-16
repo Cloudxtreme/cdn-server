@@ -4,6 +4,25 @@
 	</div>
 	<div class="panel-body">
 		<ul class="list-unstyled">
+            {% if is_granted('ROLE_ADMIN') %}
+            <li>
+                <span class="title">User Groups</span>
+                <div class="btn-group pull-right">
+                    <a type="button" class="btn btn-default btn-xs" href="{{ path('admin_usergroup') }}" title="View">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </div>
+            </li>
+            <hr/>
+            <li>
+                <span class="title">Users</span>
+                <div class="btn-group pull-right">
+                    <a type="button" class="btn btn-default btn-xs" href="{{ path('admin_user') }}" title="View">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </div>
+            </li>
+            {% endif %}
             {#
 			<li>
 		  		<span class="title">Exception List</span>

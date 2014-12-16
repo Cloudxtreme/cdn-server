@@ -41,7 +41,9 @@
 
 <div class="panel-footer">
     <a href="{{ path('admin_project') }}" title="Back to the list" class="btn btn-default">Back to the list</a>
+    {% if is_granted('ROLE_MANAGER') %}
     <a href="{{ path('admin_project_edit', { 'id': entity.id }) }}" title="Edit the user group" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+    {% endif %}
     {# {{ form(delete_form) }} #}
 </div>
 {% endblock %}

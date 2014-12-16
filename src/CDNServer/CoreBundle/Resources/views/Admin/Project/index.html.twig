@@ -27,15 +27,19 @@
                     <td>{{ entity.creationDate|date('Y/m/d H:i:s') }}</td>
                     <td>
                         <a href="{{ path('admin_project_show', {'id':entity.id}) }}" title="View project details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search"></span> Details</a>
+                        {% if is_granted('ROLE_MANAGER') %}
                         <a href="{{ path('admin_project_edit', {'id':entity.id}) }}" title="Edit project details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 
+    {% if is_granted('ROLE_MANAGER') %}
     <div class="panel-footer">
         <a href="{{ path('admin_project_new') }}" title="Create a new project" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a new project</a>
     </div>
+    {% endif %}
 {% endblock %}
 

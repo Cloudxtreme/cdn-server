@@ -1,3 +1,8 @@
+api_resource_check:
+    path:     /check
+    defaults: { _controller: "CDNServerCoreBundle:Api/Resource:check" }
+    requirements: { _method: get }
+
 api_resource_fetch_sync:
     path:     /fetch
     defaults: { _controller: "CDNServerCoreBundle:Api/Resource:fetch" }

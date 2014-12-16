@@ -1,0 +1,55 @@
+{% extends 'CDNServerCoreBundle:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User #{{ entity.id }}
+{% endblock %}
+{% block panel_title %}
+    User #{{ entity.id }} ({{ entity.email }})
+{% endblock %}
+
+{% set active_page = 'list_users' %}
+
+{% block panel_content %}
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>First name</th>
+            <td>{{ entity.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Last name</th>
+            <td>{{ entity.lastName }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ entity.stringRoles }}</td>
+        </tr>
+        <tr>
+            <th>Groups</th>
+            <td>
+                <ul>
+                    {% for userGroup in entity.userGroups %}
+                    {{ userGroup.name }}
+                    {% else %}
+                    <i>None</i>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Last login date</th>
+            <td>{{ entity.lastLogin|date('Y/m/d H:i:s') }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel-footer">
+    <a href="{{ path('admin_user') }}" title="Back to the list" class="btn btn-default">Back to the list</a>
+    <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}" title="Edit the user group" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+    {# {{ form(delete_form) }} #}
+</div>
+{% endblock %}

@@ -22,7 +22,14 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CDNServerCoreBundle:Project')->findAll();
+        $filter = function($it) {
+            return $it->getId();
+        };
+
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            $entities = $em->getRepository('CDNServerCoreBundle:Project')->findAll();
+        else
+            $entities = $em->getRepository('CDNServerCoreBundle:Project')->findByUserGroupIn(array_map($filter, $this->getUser()->getUserGroups()->toArray()));
 
         return $this->render('CDNServerCoreBundle:Admin/Project:index.html.twig', array(
             'entities' => $entities,
@@ -34,6 +41,9 @@ class ProjectController extends Controller
      */
     public function createAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_MANAGER'))
+            throw $this->createAccessDeniedException();
+
         $entity = new Project();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -78,6 +88,9 @@ class ProjectController extends Controller
      */
     public function newAction()
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_MANAGER'))
+            throw $this->createAccessDeniedException();
+
         $entity = new Project();
         $form   = $this->createCreateForm($entity);
 
@@ -115,6 +128,9 @@ class ProjectController extends Controller
      */
     public function editAction($id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_MANAGER'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CDNServerCoreBundle:Project')->find($id);
@@ -157,6 +173,9 @@ class ProjectController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_MANAGER'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CDNServerCoreBundle:Project')->find($id);
@@ -187,6 +206,9 @@ class ProjectController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_MANAGER'))
+            throw $this->createAccessDeniedException();
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -202,7 +224,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('project'));
+        return $this->redirect($this->generateUrl('admin_project'));
     }
 
     /**

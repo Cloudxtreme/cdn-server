@@ -20,6 +20,9 @@ class UserGroupController extends Controller
      */
     public function indexAction()
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('CDNServerCoreBundle:UserGroup')->findAll();
@@ -34,6 +37,9 @@ class UserGroupController extends Controller
      */
     public function createAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $entity = new UserGroup();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -78,6 +84,9 @@ class UserGroupController extends Controller
      */
     public function newAction()
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $entity = new UserGroup();
         $form   = $this->createCreateForm($entity);
 
@@ -93,6 +102,9 @@ class UserGroupController extends Controller
      */
     public function showAction($id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CDNServerCoreBundle:UserGroup')->find($id);
@@ -115,6 +127,9 @@ class UserGroupController extends Controller
      */
     public function editAction($id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CDNServerCoreBundle:UserGroup')->find($id);
@@ -157,6 +172,9 @@ class UserGroupController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CDNServerCoreBundle:UserGroup')->find($id);
@@ -187,6 +205,9 @@ class UserGroupController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            throw $this->createAccessDeniedException();
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
