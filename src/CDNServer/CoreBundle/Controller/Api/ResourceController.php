@@ -51,7 +51,10 @@ class ResourceController extends Controller
             return new Response(json_encode(array('error' => "Supplied key is invalid.")), 500);
 
         $name = isset($params['name']) ? $params['name'] : $this->generateNameFromURL($params['url']);
-        $ext = pathinfo(parse_url($params['url'], PHP_URL_PATH), PATHINFO_EXTENSION);
+
+        if (!($ext = pathinfo(parse_url($params['url'], PHP_URL_PATH), PATHINFO_EXTENSION)))
+            return new Response(json_encode(array('error' => "The file extension is not visible.")), 500);
+
         $resource = $d->getRepository('CDNServerCoreBundle:Resource')->findOneByProjectAndName($project->getId(), $name);
         if ($resource && (!isset($params['update']) || !$params['update']))
             return new Response(json_encode(array('error' => "The resource ".$name." already exists, either use another name or set the 'update' option to true.")), 500);
@@ -86,7 +89,9 @@ class ResourceController extends Controller
             return new Response(json_encode(array('error' => "Supplied key is invalid.")), 500);
 
         $name = isset($params['name']) ? $params['name'] : $this->generateNameFromURL($params['url']);
-        $ext = pathinfo(parse_url($params['url'], PHP_URL_PATH), PATHINFO_EXTENSION);
+        if (!($ext = pathinfo(parse_url($params['url'], PHP_URL_PATH), PATHINFO_EXTENSION)))
+            return new Response(json_encode(array('error' => "The file extension is not visible.")), 500);
+
         $resource = $d->getRepository('CDNServerCoreBundle:Resource')->findOneByProjectAndName($project->getId(), $name);
         if ($resource && (!isset($params['update']) || !$params['update']))
             return new Response(json_encode(array('error' => "The resource ".$name." already exists, either use another name or set the 'update' option to true.")), 500);

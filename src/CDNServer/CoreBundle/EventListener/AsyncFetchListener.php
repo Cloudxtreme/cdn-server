@@ -29,18 +29,16 @@ class AsyncFetchListener
 
     public function onKernelTerminate(PostResponseEvent $pre)
     {
+        //Symfony2 locks the session for the Request's lifecycle.
+        //Here, we need this method to be executed asynchronously.
+        //Thus, we release the session immediately.
+        //$pre->getRequest()->getSession()->save();
+        $this->container->get('session')->save();
+        session_write_close();
+
         if ($pre->getRequest()->attributes->has('fetch_request'))
         {
-            //Symfony2 locks the session for the Request's lifecycle.
-            //Here, we need this method to be executed asynchronously.
-            //Thus, we release the session immediately.
-            //$pre->getRequest()->getSession()->save();
-            $this->container->get('session')->save();
-            session_write_close();
-
             $attr = $pre->getRequest()->attributes->get('fetch_request');
-
-            sleep(5);
 
             if (($data = file_get_contents($attr['url'])) === false)
             {
