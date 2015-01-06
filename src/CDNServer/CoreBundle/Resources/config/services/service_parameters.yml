@@ -8,4 +8,4 @@
 parameters:
 
   resource_root_dir:  "/var/www/cdn/"
-  resource_ext_path:  "http://37.187.35.212/cdn/"
+  resource_ext_path:  "http://placeholder.com/cdn/"
