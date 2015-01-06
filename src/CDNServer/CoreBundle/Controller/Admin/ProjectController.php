@@ -35,9 +35,11 @@ class ProjectController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Project entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -102,7 +104,8 @@ class ProjectController extends Controller
 
     /**
      * Finds and displays a Project entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)
     {
@@ -124,7 +127,8 @@ class ProjectController extends Controller
 
     /**
      * Displays a form to edit an existing Project entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction($id)
     {
@@ -167,9 +171,12 @@ class ProjectController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Project entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function updateAction(Request $request, $id)
     {
@@ -200,9 +207,12 @@ class ProjectController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Project entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, $id)
     {

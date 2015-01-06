@@ -3,7 +3,6 @@
 namespace CDNServer\CoreBundle\EventListener;
 
 use CDNServer\CoreBundle\EventListener\Base\ViewListenerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

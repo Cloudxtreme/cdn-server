@@ -3,7 +3,6 @@
 namespace CDNServer\CoreBundle\EventListener\Exception;
 
 use CDNServer\CoreBundle\EventListener\Base\ExceptionListenerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 

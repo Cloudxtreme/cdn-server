@@ -2,8 +2,6 @@
 
 namespace CDNServer\CoreBundle\Helper\JsonSerialize;
 
-use CDNServer\CoreBundle\Helper\JsonSerialize\JsonSerializable;
-
 /**
  * Since we apparently can't afford a PHP5.4+ version on our servers, here's an approximate
  * (and hacky) implementation of what the \JsonSerializable interface normally allows.

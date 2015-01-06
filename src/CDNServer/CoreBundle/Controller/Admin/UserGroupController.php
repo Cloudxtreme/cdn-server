@@ -31,9 +31,11 @@ class UserGroupController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new UserGroup entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -98,7 +100,8 @@ class UserGroupController extends Controller
 
     /**
      * Finds and displays a UserGroup entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)
     {
@@ -123,7 +126,8 @@ class UserGroupController extends Controller
 
     /**
      * Displays a form to edit an existing UserGroup entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction($id)
     {
@@ -166,9 +170,12 @@ class UserGroupController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing UserGroup entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function updateAction(Request $request, $id)
     {
@@ -199,9 +206,12 @@ class UserGroupController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a UserGroup entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, $id)
     {
