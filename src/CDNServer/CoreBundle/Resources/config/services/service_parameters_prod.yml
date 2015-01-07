@@ -3,4 +3,5 @@ imports:
 
 #locally overloaded parameters
 parameters:  
-  
+  resource_root_dir:  "/var/www/cdn/"
+  resource_ext_path:  "http://cdn-orange.com/cdn/"
