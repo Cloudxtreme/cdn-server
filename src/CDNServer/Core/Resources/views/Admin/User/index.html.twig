@@ -1,0 +1,43 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User list
+{% endblock %}
+{% block panel_title %}
+    Users
+{% endblock %}
+
+{% set active_page = 'list_users' %}
+
+{% block panel_content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Last login date</th>
+                <th>Actions</th>
+            </tr>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.email }}</td>
+                    <td>{{ entity.firstName }}</td>
+                    <td>{{ entity.lastName }}</td>
+                    <td>{{ entity.lastLogin|date('Y/m/d H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('admin_user_show', {'id':entity.id}) }}" title="View user details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search"></span> Details</a>
+                        <a href="{{ path('admin_user_edit', {'id':entity.id}) }}" title="Edit user details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <a href="{{ path('admin_user_new') }}" title="Create a new user" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a new user</a>
+    </div>
+{% endblock %}
+

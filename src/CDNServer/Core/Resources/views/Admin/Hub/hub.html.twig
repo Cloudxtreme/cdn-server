@@ -1,0 +1,23 @@
+{% extends 'CDNServerCore:Admin:__layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }} - Hub
+{% endblock %}
+
+{% set active_page = 'hub' %}
+
+{% block content %}
+
+<div class="row">
+
+	<div class="hub-block col-xs-12 col-sm-6">
+		{% include 'CDNServerCore:Admin/Hub:_hub_list.html.twig' %}
+	</div>
+	
+	<div class="hub-block col-xs-12 col-sm-6">
+		{% include 'CDNServerCore:Admin/Hub:_hub_others.html.twig' %}
+	</div>
+	
+</div>
+
+{% endblock %}

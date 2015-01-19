@@ -1,0 +1,49 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Project #{{ entity.id }}
+{% endblock %}
+{% block panel_title %}
+    Project #{{ entity.id }} ({{ entity.name }})
+{% endblock %}
+
+{% set active_page = 'list_projects' %}
+
+{% block panel_content %}
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Group</th>
+            <td>{{ entity.userGroup }}</td>
+        </tr>
+        <tr>
+            <th>Key</th>
+            <td>{{ entity.ukey }}</td>
+        </tr>
+        <tr>
+            <th>Path</th>
+            <td>{{ entity.userGroup.path~'/'~entity.path }}</td>
+        </tr>
+        <tr>
+            <th>Creation date</th>
+            <td>{{ entity.creationDate|date('Y/m/d H:i:s') }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel-footer">
+    <a href="{{ path('admin_project') }}" title="Back to the list" class="btn btn-default">Back to the list</a>
+    {% if is_granted('ROLE_MANAGER') %}
+    <a href="{{ path('admin_project_edit', { 'id': entity.id }) }}" title="Edit the user group" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+    {% endif %}
+    {# {{ form(delete_form) }} #}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'CDNServerCore:Admin:__layout.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="hub-block col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% block panel_title %}{% endblock %}</h3>
+            </div>
+            {% block panel_content %}{% endblock %}
+        </div>
+    </div>
+</div>
+			
+{% endblock %}

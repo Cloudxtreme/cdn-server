@@ -1,0 +1,7 @@
+services:
+  session:
+    class:      CDNServer\Core\Session\CoreSession
+    arguments:
+      - @session.storage
+      - @session.attribute_bag
+      - @session.flash_bag

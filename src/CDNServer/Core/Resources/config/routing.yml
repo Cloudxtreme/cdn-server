@@ -1,0 +1,41 @@
+
+##
+# Admin
+##
+
+admin_hub:
+    pattern:  /
+    defaults: { _controller: CDNServerCore:Admin\Hub:hub }
+
+CDNServerCore_Admin_Project:
+    resource: "@CDNServerCore/Resources/config/routing/admin/project_routing.yml"
+    prefix:   /project
+
+CDNServerCore_Admin_User:
+    resource: "@CDNServerCore/Resources/config/routing/admin/user_routing.yml"
+    prefix:   /user
+
+CDNServerCore_Admin_UserGroup:
+    resource: "@CDNServerCore/Resources/config/routing/admin/usergroup_routing.yml"
+    prefix:   /user-group
+
+##
+# API
+##
+
+CDNServerCore_Api_Resource:
+    resource: "@CDNServerCore/Resources/config/routing/api/resource_routing.yml"
+    prefix:   /api/resource
+
+CDNServerCore_Api_Project:
+    resource: "@CDNServerCore/Resources/config/routing/api/project_routing.yml"
+    prefix:   /api/project
+
+
+##
+# FOS User Bundle
+##
+
+CDNServerCore_FOSUser:
+  resource: "@CDNServerCore/Resources/config/routing/fosuser_routing.yml"
+  prefix: /

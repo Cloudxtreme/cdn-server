@@ -1,0 +1,17 @@
+services:
+  view.global.listener:
+    class:        CDNServer\Core\EventListener\ViewListener
+    arguments:
+      - @templating
+      - 'twig'
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
+
+  async.fetch.listener:
+    class:        CDNServer\Core\EventListener\AsyncFetchListener
+    arguments:
+      - @service_container
+      - @resource.fetcher
+      - @logger
+    tags:
+      - { name: kernel.event_listener, event: kernel.terminate, method: onKernelTerminate }

@@ -1,0 +1,21 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User edit
+{% endblock %}
+{% block panel_title %}
+    User edit
+{% endblock %}
+
+{% set active_page = 'list_users' %}
+
+{% block panel_content %}
+
+<div class="panel-body">
+    {{ form(edit_form) }}
+
+    {{ form(delete_form) }}
+    <a class="btn btn-default" href="{{ path('admin_user') }}">Back to the list</a>
+</div>
+
+{% endblock %}

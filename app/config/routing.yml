@@ -1,3 +1,3 @@
-CDNServerCoreBundle:
-    resource: "@CDNServerCoreBundle/Resources/config/routing.yml"
+CDNServerCore:
+    resource: "@CDNServerCore/Resources/config/routing.yml"
     prefix:   /

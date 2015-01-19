@@ -1,0 +1,19 @@
+services:
+  resource.writer:
+    class:        CDNServer\Core\Write\ResourceWriter
+    arguments:
+      - %resource_ext_path%
+      - %resource_root_dir%
+      - @doctrine.orm.entity_manager
+
+  resource.fetcher:
+    class:        CDNServer\Core\Fetch\ResourceFetcher
+    arguments:
+      - @resource.writer
+      - @doctrine.orm.entity_manager
+
+  resource.factory:
+    class:        CDNServer\Core\Factory\ResourceAbstractFactory
+    arguments:
+      - @resource.writer
+      - @doctrine.orm.entity_manager

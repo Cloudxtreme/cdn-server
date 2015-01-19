@@ -1,0 +1,23 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - User Group creation
+{% endblock %}
+{% block panel_title %}
+    User Group creation
+{% endblock %}
+
+{% set active_page = 'list_usergroups' %}
+
+{% block panel_content %}
+
+    <div class="panel-body">
+
+        {{ form(form) }}
+
+        <a class="btn btn-default" href="{{ path('admin_usergroup') }}">
+            Back to the list
+        </a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+admin_user:
+    path:     /
+    defaults: { _controller: "CDNServerCore:Admin/User:index" }
+
+admin_user_show:
+    path:     /{id}/show
+    defaults: { _controller: "CDNServerCore:Admin/User:show" }
+
+admin_user_new:
+    path:     /new
+    defaults: { _controller: "CDNServerCore:Admin/User:new" }
+
+admin_user_create:
+    path:     /create
+    defaults: { _controller: "CDNServerCore:Admin/User:create" }
+    requirements: { _method: post }
+
+admin_user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CDNServerCore:Admin/User:edit" }
+
+admin_user_update:
+    path:     /{id}/update
+    defaults: { _controller: "CDNServerCore:Admin/User:update" }
+    requirements: { _method: post|put }
+
+admin_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CDNServerCore:Admin/User:delete" }
+    requirements: { _method: post|delete }

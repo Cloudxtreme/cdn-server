@@ -1,0 +1,4 @@
+api_project_directory:
+    path:     /directory
+    defaults: { _controller: "CDNServerCore:Api/Project:directory" }
+    requirements: { _method: get }

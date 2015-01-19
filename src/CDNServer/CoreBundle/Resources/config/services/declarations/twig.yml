@@ -1,5 +1,0 @@
-services:
-  view.twig.twig_extension:
-    class:        CDNServer\CoreBundle\Twig\TwigExtension
-    tags:
-      - { name: twig.extension }

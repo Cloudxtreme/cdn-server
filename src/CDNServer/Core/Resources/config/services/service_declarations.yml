@@ -1,0 +1,7 @@
+imports:
+  - { resource: services/declarations/resource.yml }
+  - { resource: services/declarations/listeners.yml }
+  - { resource: services/declarations/session.yml }
+  - { resource: services/declarations/form_types.yml }
+  - { resource: services/declarations/twig.yml }
+  - { resource: services/declarations/twig_routing.yml }

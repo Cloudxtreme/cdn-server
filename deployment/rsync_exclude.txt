@@ -6,8 +6,8 @@
 /app/config/parameters.yml
 /app/cache
 /app/logs
-/src/CDNServer/CoreBundle/Resources/config/*_local.*
-/src/CDNServer/CoreBundle/Resources/config/services/*_local.*
+/src/CDNServer/Core/Resources/config/*_local.*
+/src/CDNServer/Core/Resources/config/services/*_local.*
 /app/config/qlf_application
 /app/config/rec_application
 /app/config/prod_application

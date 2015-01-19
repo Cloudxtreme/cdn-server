@@ -1,0 +1,13 @@
+{% extends 'CDNServerCore:Admin:__setup.html.twig' %}
+
+{% block body %}
+
+<div style="padding:25px;">
+	{% include 'CDNServerCore:Admin:_menu.html.twig' %}
+	
+	{% include 'CDNServerCore:Admin:_flash.html.twig' %}
+	
+	{% block content %}{% endblock %}
+</div>
+			
+{% endblock %}
