@@ -12,8 +12,18 @@ services:
       - @resource.writer
       - @doctrine.orm.entity_manager
 
-  resource.factory:
-    class:        CDNServer\Core\Factory\ResourceAbstractFactory
+  resource.factory.simple:
+    class:        CDNServer\Core\Factory\ResourceFactory
+    arguments:
+      - @resource.writer
+      - @doctrine.orm.entity_manager
+  resource.factory.url:
+    class:        CDNServer\Core\Factory\UrlResourceFactory
+    arguments:
+      - @resource.writer
+      - @doctrine.orm.entity_manager
+  resource.factory.stream:
+    class:        CDNServer\Core\Factory\StreamResourceFactory
     arguments:
       - @resource.writer
       - @doctrine.orm.entity_manager

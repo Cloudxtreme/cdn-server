@@ -21,7 +21,7 @@ class ResourceController extends Controller
     {
         try {
             $params = ApiHelper::checkRequiredParameters($request->query->all(), array('key', 'name'));
-            $resource = $this->container->get('resource.factory')->check($params['key'], $params);
+            $resource = $this->container->get('resource.factory.simple')->check($params['key'], $params);
 
             return new Response(json_encode(array(
                 'name'  => $resource->getFilename(),
@@ -29,7 +29,7 @@ class ResourceController extends Controller
             )), 200);
         }
         catch (\Exception $e) {
-            $code = ($e instanceof ResourceFactoryException && $e->getCode() == 2) ? 404 : $e->getCode();
+            $code = ($e instanceof ResourceFactoryException && $e->getCode() == 2) ? 404 : 500;
             return new Response(json_encode(array('error' => $e->getMessage())), $code);
         }
     }
@@ -42,7 +42,7 @@ class ResourceController extends Controller
     {
         try {
             $params = ApiHelper::checkRequiredParameters($request->request->all(), array('key', 'url'));
-            $resource = $this->container->get('resource.factory')->create($params['key'], $params);
+            $resource = $this->container->get('resource.factory.url')->create($params['key'], $params);
             $remote = $this->container->get('resource.fetcher')->fetch($resource, $params['url']);
 
             return new Response(json_encode(array(
@@ -64,7 +64,7 @@ class ResourceController extends Controller
         try {
             $params = ApiHelper::checkRequiredParameters($request->request->all(), array('key', 'url'));
             /** @var Resource $resource */
-            $resource = $this->container->get('resource.factory')->create($params['key'], $params);
+            $resource = $this->container->get('resource.factory.url')->create($params['key'], $params);
             $request->attributes->set('fetch_request', array(
                 'resource'  => $resource,
                 'url'       => $params['url'],
@@ -84,7 +84,7 @@ class ResourceController extends Controller
     {
         try {
             $params = ApiHelper::checkRequiredParameters($request->request->all(), array('key', 'data'));
-            $resource = $this->container->get('resource.factory')->create($params['key'], $params);
+            $resource = $this->container->get('resource.factory.stream')->create($params['key'], $params);
             $remote = $this->container->get('resource.writer')->write($resource, $params['data']);
 
             return new Response(json_encode(array(

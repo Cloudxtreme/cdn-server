@@ -1,3 +1,14 @@
+##
+# API
+##
+
+CDNServerCore_Api_Resource:
+    resource: "@CDNServerCore/Resources/config/routing/api/resource_routing.yml"
+    prefix:   /api/resource
+
+CDNServerCore_Api_Project:
+    resource: "@CDNServerCore/Resources/config/routing/api/project_routing.yml"
+    prefix:   /api/project
 
 ##
 # Admin
@@ -18,19 +29,6 @@ CDNServerCore_Admin_User:
 CDNServerCore_Admin_UserGroup:
     resource: "@CDNServerCore/Resources/config/routing/admin/usergroup_routing.yml"
     prefix:   /user-group
-
-##
-# API
-##
-
-CDNServerCore_Api_Resource:
-    resource: "@CDNServerCore/Resources/config/routing/api/resource_routing.yml"
-    prefix:   /api/resource
-
-CDNServerCore_Api_Project:
-    resource: "@CDNServerCore/Resources/config/routing/api/project_routing.yml"
-    prefix:   /api/project
-
 
 ##
 # FOS User Bundle

@@ -2,6 +2,7 @@
 
 namespace CDNServer\Core\Controller\Api;
 
+use CDNServer\Core\Factory\Exception\ResourceFactoryException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,7 @@ class ProjectController extends Controller
     {
         try {
             $params = ApiHelper::checkRequiredParameters($request->query->all(), array('key'));
-            $project = $this->container->get('resource.factory')->getProject($params['key']);
+            $project = $this->container->get('resource.factory.simple')->getProject($params['key']);
 
             return new Response(json_encode(array(
                 'name'  => $project->getName(),
@@ -26,8 +27,7 @@ class ProjectController extends Controller
             )), 200);
         }
         catch (\Exception $e) {
-            $code = $e->getCode();
-            return new Response(json_encode(array('error' => $e->getMessage())), $code);
+            return new Response(json_encode(array('error' => $e->getMessage())), 500);
         }
     }
 }

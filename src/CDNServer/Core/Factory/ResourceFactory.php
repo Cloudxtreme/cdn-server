@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @package CDNServer\Core\Factory
  * @author Pierre LECERF <pierre.lecerf@gmail.com>
  */
-abstract class ResourceFactory implements ResourceFactoryInterface
+class ResourceFactory implements ResourceFactoryInterface
 {
     protected $writer;
     protected $em;
@@ -69,7 +69,7 @@ abstract class ResourceFactory implements ResourceFactoryInterface
     public function  getProject($key)
     {
         if (!($project = $this->em->getRepository('CDNServerCore:Project')->findOneBy(array('ukey' => $key))))
-            throw new \Exception("Supplied key is invalid.");
+            throw new ResourceFactoryException("Supplied key is invalid.");
         return $project;
     }
 }
