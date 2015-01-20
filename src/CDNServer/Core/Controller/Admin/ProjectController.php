@@ -230,6 +230,8 @@ class ProjectController extends Controller
                 throw $this->createNotFoundException('Unable to find Project entity.');
             }
 
+            //TODO delete corresponding directory ?
+
             $em->remove($entity);
             $em->flush();
         }
