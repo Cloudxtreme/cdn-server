@@ -21,7 +21,7 @@ class ApiHelper
         foreach ($keys as $k)
         {
             if (!isset($data[$k]))
-                $error[] = "Parameter ".$k." is required.";
+                $error[] = "Parameter '".$k."' is required.";
         }
         if (!empty($error))
             throw new \Exception(implode("\n", $error));
