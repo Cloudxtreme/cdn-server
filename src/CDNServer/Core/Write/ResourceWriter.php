@@ -38,6 +38,7 @@ class ResourceWriter implements ResourceWriterInterface
             $this->markForRefresh($resource);
             throw new ResourceWriterException("The data retrieved for Resource #".$resource->getId()." could not be written to target ".$target." (flagging the Resource for a refresh).", 1);
         }
+        $this->markForRefresh($resource, false);
         return $this->generateRemotePath($resource);
     }
 
@@ -69,9 +70,9 @@ class ResourceWriter implements ResourceWriterInterface
         return $this->resourceRemoteRoot.$path;
     }
 
-    protected function markForRefresh(Resource $resource)
+    protected function markForRefresh(Resource $resource, $status = true)
     {
-        $resource->setRefresh(true);
+        $resource->setRefresh($status);
         $this->em->persist($resource);
         $this->em->flush($resource);
     }

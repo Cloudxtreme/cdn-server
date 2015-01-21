@@ -22,6 +22,10 @@ CDNServerCore_Admin_Project:
     resource: "@CDNServerCore/Resources/config/routing/admin/project_routing.yml"
     prefix:   /project
 
+CDNServerCore_Admin_Resource:
+    resource: "@CDNServerCore/Resources/config/routing/admin/resource_routing.yml"
+    prefix:   /resource
+
 CDNServerCore_Admin_User:
     resource: "@CDNServerCore/Resources/config/routing/admin/user_routing.yml"
     prefix:   /user

@@ -30,12 +30,13 @@ class ResourceFetcher implements ResourceFetcherInterface
             $this->markForRefresh($resource);
             throw new ResourceFetcherException("The remote file ".$url." could not be retrieved (flagging the target Resource for a refresh).", 1);
         }
+        $this->markForRefresh($resource, false);
         return $this->writer->write($resource, $data);
     }
 
-    protected function markForRefresh(Resource $resource)
+    protected function markForRefresh(Resource $resource, $status = true)
     {
-        $resource->setRefresh(true);
+        $resource->setRefresh($status);
         $this->em->persist($resource);
         $this->em->flush($resource);
     }

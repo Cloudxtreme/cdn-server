@@ -1,0 +1,7 @@
+admin_resource_list:
+    path:     /{project_id}
+    defaults: { _controller: "CDNServerCore:Admin/Resource:list" }
+
+admin_resource_show:
+    path:     /{id}/show
+    defaults: { _controller: "CDNServerCore:Admin/Resource:show" }

@@ -23,6 +23,17 @@ class ResourceRepository extends EntityRepository
 		->getQuery()
 		->getOneOrNullResult();
 	}
+
+    public function findByProjectId($project_id)
+    {
+        return $this->getQueryBuilder()
+            ->join('r.project', 'p')
+            ->where('p.id = :project_id')
+            ->addOrderBy('r.creationDate', 'DESC')
+            ->setParameter('project_id', $project_id)
+            ->getQuery()
+            ->getResult();
+    }
 	
 	/**
 	 * @return QueryBuilder

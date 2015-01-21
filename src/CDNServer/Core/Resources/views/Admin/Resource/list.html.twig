@@ -1,0 +1,44 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ project.name }} resources
+{% endblock %}
+{% block panel_title %}
+    {{ project.name }} resources
+{% endblock %}
+
+{% set active_page = 'list_resources' %}
+
+{% import 'CDNServerCore:Admin/Resource:_macro.html.twig' as macro %}
+
+{% block panel_content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Filename</th>
+                <th>Status</th>
+                <th>Creation date</th>
+                <th>Actions</th>
+            </tr>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.filename }}</td>
+                    <td>{{ macro.resource_status(entity) }}</td>
+                    <td>{{ entity.creationDate|date('Y/m/d H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('admin_resource_show', {'id':entity.id}) }}" title="View resource details" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search"></span> Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <a href="{{ path('admin_project_show', {'id':project.id}) }}" title="Return to project" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Return to project</a>
+    </div>
+{% endblock %}
+

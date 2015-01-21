@@ -68,3 +68,22 @@ pre {
 .panel-body {
 	margin-bottom:		10px;
 }
+
+.panel .input-group {
+    width:              650px;
+}
+.panel .input-group span.form-control {
+    width:              650px;
+    overflow-x:         scroll;
+    white-space:        nowrap;
+}
+
+iframe.resource-preview {
+    border:             1px solid #c8c8c8;
+    color:              black;
+    background-color:   #c8c8c8;
+}
+iframe.resource-preview html {
+    color:              black;
+    background-color:   #c8c8c8;
+}

@@ -30,7 +30,21 @@
         </tr>
         <tr>
             <th>Path</th>
-            <td>{{ entity.userGroup.path~'/'~entity.path }}</td>
+            <td>
+                <div class="input-group">
+                    <span class="form-control">{{ entity.userGroup.path~'/'~entity.path }}</span>
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" href="{{ remote_url }}" title="Access (some server configurations might forbid it)" target="_blank"><span class="glyphicon glyphicon-search"></span></a>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Resources</th>
+            <td>
+                {{ entity.resources.count }}
+                <a href="{{ path('admin_resource_list', {'project_id':entity.id}) }}" title="Browse resources" class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></a>
+            </td>
         </tr>
         <tr>
             <th>Creation date</th>

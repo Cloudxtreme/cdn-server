@@ -1,0 +1,60 @@
+{% extends 'CDNServerCore:Admin:__panel.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Resource #{{ entity.id }}
+{% endblock %}
+{% block panel_title %}
+    Resource #{{ entity.id }} ({{ entity.filename }})
+{% endblock %}
+
+{% set active_page = 'list_resources' %}
+
+{% import 'CDNServerCore:Admin/Resource:_macro.html.twig' as macro %}
+
+{% block panel_content %}
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Filename</th>
+            <td>{{ entity.filename }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ macro.resource_status(entity) }}</td>
+        </tr>
+        <tr>
+            <th>Remote url</th>
+            <td>
+                <div class="input-group">
+                    <span class="form-control">{{ remote_url }}</span>
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" href="{{ remote_url }}" title="Go to resource" target="_blank"><span class="glyphicon glyphicon-search"></span></a>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Preview</th>
+            <td>
+                <iframe class="resource-preview" src="{{ remote_url }}" height="300" width="650"></iframe>
+            </td>
+        </tr>
+        <tr>
+            <th>Creation date</th>
+            <td>{{ entity.creationDate|date('Y/m/d H:i:s') }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel-footer">
+    <a href="{{ path('admin_resource_list', {'project_id':entity.project.id}) }}" title="Back to the list" class="btn btn-default">Back to the list</a>
+</div>
+{% endblock %}

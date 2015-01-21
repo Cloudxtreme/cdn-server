@@ -117,11 +117,14 @@ class ProjectController extends Controller
             throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
+        $remote = $this->container->get('resource.writer')->generateRemotePathFromString($entity->getFullPath());
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CDNServerCore:Admin/Project:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity'        => $entity,
+            'delete_form'   => $deleteForm->createView(),
+            'remote_url'    => $remote,
         ));
     }
 
