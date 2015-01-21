@@ -127,7 +127,7 @@ class UserController extends Controller
             'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-        $form->remove('plainPassword');
+        //$form->remove('plainPassword');
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
@@ -151,6 +151,10 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            $this->container->get('fos_user.user_manager')->updatePassword($entity);
+            $em->persist($entity);
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_user_edit', array('id' => $id)));
