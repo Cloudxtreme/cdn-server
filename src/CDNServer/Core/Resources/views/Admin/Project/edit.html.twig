@@ -15,7 +15,7 @@
     {{ form(edit_form) }}
 
     {{ form(delete_form) }}
-    <a class="btn btn-default" href="{{ path('admin_project') }}">Back to the list</a>
+    <a class="btn btn-default" href="{{ path('admin_project_show', {'id':entity.id}) }}">Back to the project</a>
 </div>
 
 {% endblock %}

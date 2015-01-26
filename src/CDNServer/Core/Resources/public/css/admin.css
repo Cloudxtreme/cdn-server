@@ -72,7 +72,7 @@ pre {
 .panel .input-group {
     width:              650px;
 }
-.panel .input-group span.form-control {
+.panel span.form-control {
     width:              650px;
     overflow-x:         scroll;
     white-space:        nowrap;
