@@ -9,6 +9,7 @@
 !app/logs/.gitkeep
 /build/
 /vendor/
+/deployment
 /bin/
 /composer.phar
 /app/config/*_local.*
